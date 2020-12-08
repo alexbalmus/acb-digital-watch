@@ -4,56 +4,41 @@ let minutes = 0;
 let adjust = 0;
 let time = "";
 
-function btnAHandler() 
-{
-    if (hours < 23) 
-    {
+function btnAHandler() {
+    if (hours < 23) {
         hours++;
-    } 
-    else 
-    {
+    } else {
         hours = 0;
     }
 }
 
 input.onButtonPressed(Button.A, btnAHandler);
 
-function btnABHandler() 
-{
+function btnABHandler() {
     ampm = !(ampm);
 }
 
 input.onButtonPressed(Button.AB, btnABHandler);
 
-function btnBHandler() 
-{
-    if (minutes < 59) 
-    {
+function btnBHandler() {
+    if (minutes < 59) {
         minutes++;
-    } 
-    else 
-    {
+    } else {
         minutes = 0;
     }
 }
 
 input.onButtonPressed(Button.B, btnBHandler);
 
-function shakeHandler() 
-{
+function shakeHandler() {
     let hours2 = 0;
     adjust = hours2;
 
-    if (ampm) 
-    {
-        if (hours > 12) 
-        {
+    if (ampm) {
+        if (hours > 12) {
             adjust = hours - 12;
-        } 
-        else 
-        {
-            if (hours == 0) 
-            {
+        } else {
+            if (hours == 0) {
                 adjust = 12;
             }
         }
@@ -64,14 +49,11 @@ function shakeHandler()
     time = "" + time + minutes / 10;
     time = "" + time + minutes % 10;
 
-    if (ampm) 
-    {
-        if (hours > 11) 
-        {
+    if (ampm) {
+        if (hours > 11) {
             time = "" + time + "PM";
         } 
-        else 
-        {
+        else {
             time = "" + time + "AM";
         }
     }
@@ -81,23 +63,18 @@ function shakeHandler()
 
 input.onGesture(Gesture.Shake, shakeHandler);
 
-function main() 
-{
+function main() {
     basic.pause(60000);
 
-    if (minutes < 59) 
-    {
+    if (minutes < 59) {
         minutes++;
     } 
-    else 
-    {
+    else {
         minutes = 0;
         
-        if (hours < 23) 
-        {
+        if (hours < 23) {
             hours++;
-        } else 
-        {
+        } else {
             hours = 0;
         }
     }
